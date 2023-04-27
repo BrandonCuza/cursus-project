@@ -1,8 +1,3 @@
-/*
-    File taken from contacts-app-v4 and changed to fit our use case. Was 'contact.js'.
-    Author: Amilcar Soares
-    Modified by: Brandon Cuza
-*/
 import { getDb } from '../utils/db.js';
 
 async function _get_entries_collection() {
@@ -42,18 +37,29 @@ class Course {
         this.xlist = xlist;
     }
 
+    /*
+    * Method to return all courses in the database that fit
+    * a given filter.
+    */
     static async get(filters) {
         let collection = await _get_entries_collection();
         let filteredCourses = await collection.find(filters).toArray();
         return filteredCourses;
     }
 
+    /*
+    * Method that returns a single course from the database that
+    * matches the given crn.
+    */
     static async getOne(crn) {
         let collection = await _get_entries_collection();
         let course = await collection.findOne({ crn: crn });
         return course;
     }
 
+    /*
+    * Method that returns all courses in the database.
+    */
     static async getAll() {
         let collection = await _get_entries_collection();
         let allCourses = await collection.find({}).toArray();

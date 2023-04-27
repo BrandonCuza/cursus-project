@@ -1,8 +1,3 @@
-/*
-    File taken from contacts-app-v4 and changed to fit our use case. Was 'contacts.js'.
-    Author: Amilcar Soares
-    Modified by: Brandon Cuza
-*/
 import { Course } from '../model/course.js';
 import { User_profile } from '../model/user_profile.js';
 

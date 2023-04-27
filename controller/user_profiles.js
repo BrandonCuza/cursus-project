@@ -1,8 +1,3 @@
-/*
-    File taken from contacts-app-v4 and changed to fit our use case. Was 'contacts.js'.
-    Author: Amilcar Soares
-    Modified by: Brandon Cuza
-*/
 import { validate_fields } from '../utils/validate-fields.js';
 import { User_profile } from '../model/user_profile.js';
 
@@ -53,6 +48,11 @@ export async function create_profile(req, res) {
     }
 }
 
+/**
+ * A function that gets all of the profiles in the database. 
+ * @param {Request} req - A request Object
+ * @param {Response} res - A response Object
+ */
 export async function read_all_profiles(req, res) {    
     let objs = await User_profile.getAll();
     console.log(objs.length+' item(s) sent.');
@@ -79,6 +79,10 @@ export async function read_profile(req, res) {
     } 
 }
 
+/**
+ * A function to check whether a given username password pair is in the database.
+ * @param {Request} req - A request Object
+ */
 export async function isValidUser(req) {
     let username = req.body.username;
     let obj = await User_profile.get(username);
@@ -95,7 +99,7 @@ export async function isValidUser(req) {
 }
 
 /**
- * A function to update the information in a username's user profile.
+ * A function to update the name in a username's user profile.
  * @param {Request} req - A request Object
  * @param {Response} res - A response Object
  */
@@ -116,6 +120,11 @@ export async function update_profile_name(req, res) {
     }
 }
 
+/**
+ * A function to update the student ID in a username's user profile.
+ * @param {Request} req - A request Object
+ * @param {Response} res - A response Object
+ */
 export async function update_profile_studentid(req, res) {
     let username = req.session.username;
     if (username == undefined) {
@@ -133,6 +142,11 @@ export async function update_profile_studentid(req, res) {
     }
 }
 
+/**
+ * A function to update the email in a username's user profile.
+ * @param {Request} req - A request Object
+ * @param {Response} res - A response Object
+ */
 export async function update_profile_email(req, res) {
     let username = req.session.username;
     if (username == undefined) {
@@ -150,6 +164,11 @@ export async function update_profile_email(req, res) {
     }
 }
 
+/**
+ * A function to update the password in a username's user profile.
+ * @param {Request} req - A request Object
+ * @param {Response} res - A response Object
+ */
 export async function update_profile_password(req, res) {
     let username = req.session.username;
     if (username == undefined) {
@@ -167,6 +186,11 @@ export async function update_profile_password(req, res) {
     }
 }
 
+/**
+ * A function to request a password reset.
+ * @param {Request} req - A request Object
+ * @param {Response} res - A response Object
+ */
 export async function request_password_reset(req, res) {
     let username = req.session.username;
     if (username == undefined) {
@@ -176,6 +200,11 @@ export async function request_password_reset(req, res) {
     res.send(msg);
 }
 
+/**
+ * A function to update the hasCalendar boolean value in a username's user profile.
+ * @param {Request} req - A request Object
+ * @param {Response} res - A response Object
+ */
 export async function update_profile_hascalendar(req, res) {
     let username = req.session.username;
     if (username == undefined) {
@@ -193,6 +222,11 @@ export async function update_profile_hascalendar(req, res) {
     }
 }
 
+/**
+ * A function to update the Google username in a username's user profile.
+ * @param {Request} req - A request Object
+ * @param {Response} res - A response Object
+ */
 export async function update_profile_googuser(req, res) {
     let username = req.session.username;
     if (username == undefined) {
@@ -210,6 +244,11 @@ export async function update_profile_googuser(req, res) {
     }
 }
 
+/**
+ * A function to update the Google password in a username's user profile.
+ * @param {Request} req - A request Object
+ * @param {Response} res - A response Object
+ */
 export async function update_profile_googpass(req, res) {
     let username = req.session.username;
     if (username == undefined) {
@@ -227,6 +266,11 @@ export async function update_profile_googpass(req, res) {
     }
 }
 
+/**
+ * A function to add courses in a username's user profile.
+ * @param {Request} req - A request Object
+ * @param {Response} res - A response Object
+ */
 export async function update_profile_courses_add(req, res) {
     let username = req.session.username;
     if (username == undefined) {
@@ -244,6 +288,11 @@ export async function update_profile_courses_add(req, res) {
     }
 }
 
+/**
+ * A function to drop courses in a username's user profile.
+ * @param {Request} req - A request Object
+ * @param {Response} res - A response Object
+ */
 export async function update_profile_courses_drop(req, res) {
     let username = req.session.username;
     if (username == undefined) {
@@ -261,6 +310,11 @@ export async function update_profile_courses_drop(req, res) {
     }
 }
 
+/**
+ * A function to add alarms in a username's user profile.
+ * @param {Request} req - A request Object
+ * @param {Response} res - A response Object
+ */
 export async function update_profile_alarms_add(req, res) {
     let username = req.session.username;
     if (username == undefined) {
@@ -278,6 +332,11 @@ export async function update_profile_alarms_add(req, res) {
     }
 }
 
+/**
+ * A function to drop alarms in a username's user profile.
+ * @param {Request} req - A request Object
+ * @param {Response} res - A response Object
+ */
 export async function update_profile_alarms_drop(req, res) {
     let username = req.session.username;
     if (username == undefined) {
@@ -295,6 +354,11 @@ export async function update_profile_alarms_drop(req, res) {
     }
 }
 
+/**
+ * A function to update the major in a username's user profile.
+ * @param {Request} req - A request Object
+ * @param {Response} res - A response Object
+ */
 export async function update_profile_major(req, res) {
     let username = req.session.username;
     if (username == undefined) {
@@ -312,6 +376,11 @@ export async function update_profile_major(req, res) {
     }
 }
 
+/**
+ * A function to update the minor in a username's user profile.
+ * @param {Request} req - A request Object
+ * @param {Response} res - A response Object
+ */
 export async function update_profile_minor(req, res) {
     let username = req.session.username;
     if (username == undefined) {
@@ -329,6 +398,11 @@ export async function update_profile_minor(req, res) {
     }
 }
 
+/**
+ * A function to update the completed courses in a username's user profile.
+ * @param {Request} req - A request Object
+ * @param {Response} res - A response Object
+ */
 export async function update_profile_compcourses_add(req, res) {
     let username = req.session.username;
     if (username == undefined) {
@@ -346,6 +420,11 @@ export async function update_profile_compcourses_add(req, res) {
     }
 }
 
+/**
+ * A function to update the degree plan in a username's user profile.
+ * @param {Request} req - A request Object
+ * @param {Response} res - A response Object
+ */
 export async function update_profile_degreeplan(req, res) {
     let username = req.session.username;
     if (username == undefined) {
@@ -363,6 +442,11 @@ export async function update_profile_degreeplan(req, res) {
     }
 }
 
+/**
+ * A function to update the year in a username's user profile.
+ * @param {Request} req - A request Object
+ * @param {Response} res - A response Object
+ */
 export async function update_profile_year(req, res) {
     let username = req.session.username;
     if (username == undefined) {

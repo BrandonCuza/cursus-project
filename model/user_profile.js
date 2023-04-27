@@ -1,8 +1,3 @@
-/*
-    File taken from contacts-app-v4 and changed to fit our use case. Was 'contact.js'.
-    Author: Amilcar Soares
-    Modified by: Brandon Cuza
-*/
 import { getDb } from '../utils/db.js';
 import nodemailer from 'nodemailer';
 
@@ -31,6 +26,9 @@ class User_profile {
         this.year = year;
     };
 
+    /*
+    * Method to save this user profile object to the database.
+    */
     async save() {
         try {
             let collection = await _get_profiles_collection();
@@ -42,18 +40,29 @@ class User_profile {
         }
     }
 
+    /*
+    * Static method to return all user profiles in the database.
+    */
     static async getAll() {
         let collection = await _get_profiles_collection();
         let objs = await collection.find({}).toArray();
         return objs;                
     }
 
+    /*
+    * Static method to return a user profile that matches the given
+    * username.
+    */
     static async get(username) {
         let collection = await _get_profiles_collection();
         let obj = await collection.find({"username":username}).toArray();
         return obj;
     }
 
+    /*
+    * Static method to update the name of a user profile that matches
+    * the given username.
+    */
     static async updateName(username, name) {
         let collection = await _get_profiles_collection();
         let new_val = {$set: {'name': name}}
@@ -65,6 +74,10 @@ class User_profile {
         }
     }
 
+    /*
+    * Static method to update the student ID of a user profile that matches
+    * the given username.
+    */
     static async updateStudentId(username, studentid) {
         let collection = await _get_profiles_collection();
         let new_val = {$set: {'studentid': studentid}}
@@ -76,6 +89,10 @@ class User_profile {
         }                       
     }
 
+    /*
+    * Static method to update the email of a user profile that matches
+    * the given username.
+    */
     static async updateEmail(username, email) {
         let collection = await _get_profiles_collection();
         let new_val = {$set: {'email': email}}
@@ -87,6 +104,10 @@ class User_profile {
         }                        
     }
 
+    /*
+    * Static method to update the password of a user profile that matches
+    * the given username.
+    */
     static async updatePassword(username, password) {
         let collection = await _get_profiles_collection();
         let new_val = {$set: {'Password': password}}
@@ -98,6 +119,11 @@ class User_profile {
         }
     }
 
+    /*
+    * Static method to send an email containing instructions on
+    * reseting the user's password to the email listed in a given
+    * username's user profile. 
+    */
     static async updatePasswordEmail(username) {
         let collection = await _get_profiles_collection();
         let obj = await collection.findOne({ 'username': username });
@@ -121,6 +147,10 @@ class User_profile {
         return 'Email sent.';
     }
 
+    /*
+    * Static method to update the hasCalendar boolean of a user profile that matches
+    * the given username.
+    */
     static async updateHasCalendar(username, hasCalendar) {
         let collection = await _get_profiles_collection();
         let new_val = {$set: {'hasCalendar': hasCalendar}}
@@ -132,6 +162,10 @@ class User_profile {
         }                      
     }
 
+    /*
+    * Static method to update the Google username of a user profile that matches
+    * the given username.
+    */
     static async updateGoogUser(username, googuser) {
         let collection = await _get_profiles_collection();
         let new_val = {$set: {'googuser': googuser}}
@@ -143,6 +177,10 @@ class User_profile {
         }                     
     }
 
+    /*
+    * Static method to update the Google password of a user profile that matches
+    * the given username.
+    */
     static async updateGoogPass(username, googpass) {
         let collection = await _get_profiles_collection();
         let new_val = {$set: {'googpass': googpass}}
@@ -154,6 +192,10 @@ class User_profile {
         }
     }
 
+    /*
+    * Static method to add a course to the user profile that matches
+    * the given username.
+    */
     static async addCourse(username, course) {
         let collection = await _get_profiles_collection();
         let obj = await collection.updateOne({'username': username}, { $addToSet: {courses: course}});
@@ -164,6 +206,10 @@ class User_profile {
         }
     }
 
+    /*
+    * Static method to drop a course from the user profile that matches
+    * the given username.
+    */
     static async dropCourse(username, crn) {
         let collection = await _get_profiles_collection();
         let obj = await collection.updateOne({'username': username}, { $pull: {courses: {crn: crn}}});
@@ -174,6 +220,10 @@ class User_profile {
         }   
     }
 
+    /*
+    * Static method to uadd an alarm to the user profile that matches
+    * the given username.
+    */
     static async addAlarm(username, alarm) {
         let collection = await _get_profiles_collection();
         let obj = await collection.updateOne({'username': username}, { $addToSet: {alarms: alarm}});
@@ -184,6 +234,10 @@ class User_profile {
         }
     }
 
+    /*
+    * Static method to drop an alarm from the user profile that matches
+    * the given username.
+    */
     static async dropAlarms(username, alarm) {
         let collection = await _get_profiles_collection();
         let obj = await collection.updateOne({'username': username}, { $pull: {alarms: alarm}});
@@ -194,6 +248,10 @@ class User_profile {
         }   
     }
 
+    /*
+    * Static method to update the major of a user profile that matches
+    * the given username.
+    */
     static async updateMajor(username, major) {
         let collection = await _get_profiles_collection();
         let new_val = {$set: {'major': major}}
@@ -205,6 +263,10 @@ class User_profile {
         }                       
     }
 
+    /*
+    * Static method to update the minor of a user profile that matches
+    * the given username.
+    */
     static async updateMinor(username, minor) {
         let collection = await _get_profiles_collection();
         let new_val = {$set: {'minor': minor}}
@@ -216,6 +278,10 @@ class User_profile {
         }                      
     }
 
+    /*
+    * Static method to add a course to the completed courses of the user 
+    * profile that matches the given username.
+    */
     static async addCompCourse(username, course) {
         let collection = await _get_profiles_collection();
         let obj = await collection.updateOne({'username': username}, { $addToSet: {compcourses: course}});
@@ -226,6 +292,10 @@ class User_profile {
         }
     }
 
+    /*
+    * Static method to update the year of a user profile that matches
+    * the given username.
+    */
     static async updateYear(username, year) {
         let collection = await _get_profiles_collection();
         let new_val = {$set: {'year': year}}
@@ -237,6 +307,10 @@ class User_profile {
         }                       
     }
 
+    /*
+    * Static method to delete the user profile that matches
+    * the given username.
+    */
     static async delete(username) {
         let collection = await _get_profiles_collection();
         let obj = await collection.deleteOne({'username':username});
@@ -247,29 +321,6 @@ class User_profile {
             return 'User profile was not deleted.'
         }
     }
-}
-/**
- * get student's information by google username and password
- * @author bonan yin
- * @param username google username 
- * @param password google password
- * @return information
- */
-const reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
-const getStuByGoogle = async (username, password) =>{
-    let isEmail= reg.test(username);
-    let collection = await _get_profiles_collection();
-    if (!isEmail){
-        return "email format error"
-    }
-    return await collection.findOne({'Google Username' : username,'Google Password':password})
-        .then((res)=>{
-            return res
-        }).catch(err=>{
-            console.log(err)
-            return false
-        })
-
 }
 
 const _User_profile = User_profile;

@@ -6,7 +6,6 @@ import { validate_fields } from '../utils/validate-fields.js';
 const create = axios.create;
 
 var myurl = 'http://localhost:3000';           
-// Let's configure the base url
 const instance = create({
     baseURL: myurl,
     timeout: 5000, //5 seconds max

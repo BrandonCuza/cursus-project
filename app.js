@@ -1,10 +1,3 @@
-/*
-    File taken from contacts-app-v4 and changed to fit our use case. Was 'app.js'.
-    Author: Amilcar Soares
-    Modified by: Brandon Cuza
-
-    Login and verification help from Gohit Varanasi @ https://medium.com/weekly-webtips/how-to-create-a-simple-login-functionality-in-express-5274c44c20df
-*/
 //Imports
 import express, { json, urlencoded } from 'express';
 import session from 'express-session';

@@ -1,8 +1,3 @@
-/*
-    File taken from contacts-app-v4 and changed to fit our use case. Name not changed.
-    Author: Amilcar Soares
-    Modified by: Brandon Cuza
-*/
 import { MongoClient } from 'mongodb';
 const uri ="mongodb://127.0.0.1:27017";
 const client = new MongoClient(uri, { useUnifiedTopology: true });
