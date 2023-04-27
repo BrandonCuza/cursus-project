@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link href="./style.css" rel="stylesheet" type="text/css">
+    <link href="./table.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+
+        <div id="top" style="height: 100px; background: #862633; text-align: center; position: relative;">
+            <h2 style="color: white">homepage</h2>
+            <div class="hamburgermenu-button-container">
+                <button type="button" class="hamburgermenu-button" id="hamburgermenu-button">≡</button>
+            </div>
+            <ul class="hamburgermenu-container" id="hamburgermenu-container">
+                <li class="hamburgermenu-link">
+                    <a href="/dashboard">HOME</a>
+                </li>
+                <li class="hamburgermenu-link">
+                    <a href="/course-registration">Course Registration</a>
+                </li>
+                <li class="hamburgermenu-link">
+                    <a href="/logout">Logout</a>
+                </li>
+            </div>
+        </div>
+
+        <div  style="height: 100px;text-align: center" >
+            <h2 id="username"></h2>
+        </div>
+        <div>
+            <table class="agenda">
+                <tr>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                    <th>Sunday</th>
+                </tr>
+            </table>
+        </div>
+        <script src="./js/hamburgermenu.js"></script>
+        <script type="text/javascript">
+            let userInfo = {}
+            $(document).ready(
+                async ()=>{
+                    $('#menu').load('menu.html');
+                    await $.ajax({
+                        url: '/profile',
+                        type: 'GET',
+                        success: function(response){
+                            userInfo = response
+                            console.log(userInfo)
+                        }
+                    });
+                    $("#username").text("Welcome," + userInfo.username)
+                    await $.ajax({
+                        url: '/getStuAgenda/'+userInfo.studentid,
+                        type: 'GET',
+                        success: function(response){
+                            for (let agenda of response) {
+                                let childStr = "<tr>"
+                                for (let key of agenda) {
+                                    childStr += "<th>" + key  + "</th>"
+                                }
+                                childStr += "</tr>"
+                                $(".agenda").append(childStr)
+                            }
+                        }
+                    });
+                }
+            )
+        </script>
+</body>
+</html>

@@ -1,0 +1,409 @@
+* {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+    font-size: 16px;
+}
+body {
+    margin: 0px;
+    background-color: #63666a;
+}
+.login {
+    width: 400px;
+    background-color: #ffffff;
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+    margin: 100px auto;
+    margin-bottom: 0px;
+}
+.login h1 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #dee0e4;
+    background-color: #862633;
+    margin: 0;
+}
+.login form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 20px;
+}
+.login form label {
+    display: none;
+}
+.login form input[type="password"], .login form input[type="text"] {
+    width: 310px;
+    height: 50px;
+    border: 1px solid #dee0e4;
+    margin-bottom: 20px;
+    padding: 0 15px;
+}
+.login form input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+   margin-top: 20px;
+    background-color: #862633;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+    transition: background-color 0.2s;
+}
+.login form input[type="submit"]:hover {
+  background-color: #86263359;
+    transition: background-color 0.2s;
+}
+input {
+    display: flex;
+    padding: 12px 20px;
+    margin: 8px 8px;    
+}
+.flex-container{
+    display: flex;
+    flex-direction: row; 
+    flex-wrap: wrap;
+    align-items: baseline;
+}
+.flex-button-container{
+    display: flex; 
+    flex-direction: row; 
+}
+.section-filter{
+    display: none;
+}
+.crn-filter{
+    display: none;
+}
+.slot-filter{
+    display: none;
+}
+.type-filter{
+    display: none;
+}   
+.method-filter{
+    display: none;
+}
+.waitlist-filter{
+    display: none;
+}
+.precheck-filter{
+    display: none;
+}
+.reservelifted-filter{
+    display: none;
+}
+.attribute-filter{
+    display: none;
+}
+.credhr-filter{
+    display: none;
+}
+.billhr-filter{
+    display: none;
+}
+.prime_instr-filter{
+    display: none;
+}   
+.secnd_instr-filter{
+    display: none;
+}
+.course-container {
+    float: right;
+    width: 26vw;
+    height: 100vh;
+    overflow-y: scroll;
+    border-left: 1px solid black;
+}
+.courses-filter {
+    padding: 10px;
+    background-color: #862633;
+}
+.course-listing-perm {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-height: 150px;
+    padding: 5px;
+    border: 1px solid #aaaaaa;
+}
+.course-listing-perm .course-list-subject {
+    width: 15%;
+    min-width: 50px;
+    order: 0;
+}
+.course-listing-perm .course-list-number {
+    width: 35%;
+    min-width: 50px;
+    order: 1;
+}
+.course-listing-perm .course-list-name {
+    width: 50%;
+    min-width: 50px;
+    order: 3;
+}
+.course-listing-perm .course-list-days {
+    width: 50%;
+    min-width: 50px;
+    order: 2;
+}
+.course-listing-perm .course-list-times {
+    display: flex;
+    width: 50%;
+    min-width: 50px;
+    order: 4;
+    flex-direction: row;
+}
+.course-listing-temp {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-height: 150px;
+    padding: 5px;
+    border: 1px solid #aaaaaa;
+}
+.course-listing-temp .course-list-subject {
+    width: 15%;
+    min-width: 50px;
+    order: 0;
+}
+.course-listing-temp .course-list-number {
+    width: 35%;
+    min-width: 50px;
+    order: 1;
+}
+.course-listing-temp .course-list-name {
+    width: 50%;
+    min-width: 50px;
+    order: 3;
+}
+.course-listing-temp .course-list-days {
+    width: 50%;
+    min-width: 50px;
+    order: 2;
+}
+.course-listing-temp .course-list-times {
+    display: flex;
+    width: 50%;
+    min-width: 50px;
+    order: 4;
+    flex-direction: row;
+}
+.course-list {
+    padding: 5px;
+    margin: 0px;
+}
+.filter-split {
+    display: flex;
+    align-items: center;
+}
+.flat-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 0px;
+    gap: 10px;
+}
+.flat-list label {
+    display: flex;
+    font-size: 12px;
+    justify-content: center;
+}
+.flat-list input {
+    display: flex;
+    height: 25px;
+    width: 50px;
+    margin: 10px;
+    padding: 0;
+    justify-content: center;
+    font-size: 12px;
+}
+.flat-list select {
+    display: flex;
+    height: 25px;
+    margin: 10px;
+    padding: 0;
+    font-size: 12px;
+}
+.number-filter {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+}
+.number-filter label {
+    display: flex;
+    justify-content: center;
+}
+.number-filter .form-field-text-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 12px;
+}
+.number-filter .form-field-dropdown-field {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+}
+.name-filter input {
+    height: 25px;
+    width: 200px;
+}
+.days-filter {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    border: 1px;
+    gap: 10px;
+    width: 100%;
+}
+.days-filter .form-field-check-field {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.time-filter {
+    display: flex;
+    flex-wrap: nowrap;
+}
+.check {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.check input {
+    height: auto;
+    width:auto;
+}
+.room-filter {
+    display: none;
+    flex-direction: row;
+}
+.checkbox-filters {
+    display: none;
+    flex-direction: row;
+    margin: 10px;
+    border: 1px;
+    gap: 10px;
+}
+.filter-option-btns {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.filter-option-btns a:link {
+    text-decoration: none;
+    color: red;
+}
+.filter-option-btns a:visited {
+    text-decoration: none;
+    color: red;
+}
+.filter-option-btns a:hover {
+    text-decoration: none;
+    color: red;
+}
+.filter-option-btns a:active {
+    text-decoration: none;
+    color: red;
+}
+.expand-collapse-filter {
+    margin: 10px;
+    border: 1px;
+}
+.submit-filter-container {
+    margin: 10px;
+    border: 1px;
+}
+.reset-button-container {
+    display: flex;
+    align-items: center;
+}
+.hamburgermenu-button-container {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.hamburgermenu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 60px;
+    margin: 0px;
+    border: 0;
+    padding: 0;
+    font-size: 45px;
+}
+.hamburgermenu-container {
+    position: absolute;
+    top: 90px;
+    display: none;
+}
+.course-adder {
+    width: 74vw;
+}
+.course-list-container {
+    display: flex;
+}
+.register a:link {
+    text-decoration: none;
+    color: red;
+}
+.register a:visited {
+    text-decoration: none;
+    color: red;
+}
+.register a:hover {
+    text-decoration: none;
+    color: red;
+}
+.register a:active {
+    text-decoration: none;
+    color: red;
+}
+.course-list-adder {
+    display: flex;
+    width: 25vw;
+    height: 75vh;
+    border: 1px solid white;
+    flex-direction: column;
+}
+.delete {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-height: 150px;
+    padding: 5px;
+    border: 1px solid #aaaaaa;
+    background: pink;
+}
+.delete .course-list-subject {
+    width: 15%;
+    min-width: 50px;
+    order: 0;
+}
+.delete .course-list-number {
+    width: 35%;
+    min-width: 50px;
+    order: 1;
+}
+.delete .course-list-name {
+    width: 50%;
+    min-width: 50px;
+    order: 3;
+}
+.delete .course-list-days {
+    width: 50%;
+    min-width: 50px;
+    order: 2;
+}
+.delete .course-list-times {
+    display: flex;
+    width: 50%;
+    min-width: 50px;
+    order: 4;
+    flex-direction: row;
+}

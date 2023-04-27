@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>Register</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <link href="./style.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+        <div class="register">
+            <h1>Register</h1>
+            <form action="/profile" method="post" style="display: flex; flex-direction: row; flex-wrap: wrap;">
+
+                <label for="name">Name: </label>
+				<input type="text" name="name" placeholder="Name" id="name" required>
+
+				<label for="studentid">Student ID: </label>
+				<input type="text" name="studentid" placeholder="StudentID" id="studentid" required>
+
+                <label for="email">Email Address: </label>
+				<input type="text" name="email" placeholder="Email" id="email" required>
+
+				<label for="username">Username: </label>
+				<input type="text" name="username" placeholder="Username" id="username" required>
+
+				<label for="password">Password: </label>
+				<input type="password" name="password" placeholder="Password" id="password" required>
+
+                <input type="hidden" name="hasCalendar" id="hasCalendar" value=false>
+
+                <label for="googuser">Google Username: </label>
+				<input type="text" name="googuser" placeholder="GoogUser" id="googuser">
+
+				<label for="googpass">Google Password: </label>
+				<input type="password" name="googpass" placeholder="GoogPass" id="googpass">
+
+                <label for="major">Major: </label>
+				<input type="text" name="major" placeholder="Major" id="major" required>
+
+				<label for="minor">Minor: </label>
+				<input type="text" name="minor" placeholder="minor" id="minor" required>
+
+                <label for="year">Year of Study: </label>
+				<input type="number" name="year" placeholder="year" id="year" required>
+
+				<input type="submit" value="Register">
+            </form>
+        </div>
+    </body>

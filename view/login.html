@@ -1,0 +1,33 @@
+<!--
+  This example login page was created by David Adams and was taken from https://codeshack.io/basic-login-system-nodejs-express-mysql/
+-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1">
+		<title>Login</title>
+        <!-- include the stylesheet file -->
+        <link href="./style.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<div class="login-container" style="display: flex; justify-content: center; flex-direction: column;">
+			<div class="login">
+				<h1>Login</h1>
+				<form action="/authenticate" method="post">
+					<label for="username"></label>
+					<input type="text" name="username" placeholder="Username" id="username" required>
+					<label for="password"></label>
+					<input type="password" name="password" placeholder="Password" id="password" required>
+					<input type="submit" value="Login">
+				</form>
+			</div>
+			<div class="register" style="display: flex; justify-content: center;">
+				<a href="/register">
+					<span>Register</span>
+				</a>
+			</div>
+		</div>
+	</body>
+</html>

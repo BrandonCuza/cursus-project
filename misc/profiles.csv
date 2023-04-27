@@ -1,0 +1,3 @@
+_id.auto(),alarms.auto(),compcourses.auto(),courses.auto(),degreeplan.auto(),email.auto(),googpass.auto(),googuser.auto(),hasCalender.boolean(),major.auto(),minor.auto(),name.auto(),password.auto(),studentid.string(),username.auto(),year.auto()
+JohnUser,"[""""]","[""""]","[""""]",,testjohndoe343@gmail.com,YiCuza2023,testjohndoe343@gmail.com,true,Computer Science,Business,John Doe,JohnPass,100000000,JohnUser,4
+JaneUser,"[""""]","[""""]","[""""]",,jane.doe@gmail.com,,,false,Linguistics,Musicology,Jane Doe,JanePass,100000001,JaneUser,2

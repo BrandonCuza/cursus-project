@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Registration</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <link href="./table.css" type="text/css" rel="stylesheet" />
+  <link href="./style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="top" style="height: 100px; background: #862633;text-align: center; position: relative;">
+  <h2 style="color: white">course registration</h2>
+  <div class="hamburgermenu-button-container">
+    <button type="button" class="hamburgermenu-button" id="hamburgermenu-button">≡</button>
+    </div>
+    <ul class="hamburgermenu-container" id="hamburgermenu-container">
+    <li class="hamburgermenu-link">
+        <a href="/dashboard">HOME</a>
+    </li>
+    <li class="hamburgermenu-link">
+        <a href="/course-registration">Course Registration</a>
+    </li>
+    <li class="hamburgermenu-link">
+        <a href="/logout">Logout</a>
+    </li>
+</div>
+</div>
+
+<!--
+    <div id="menu"></div>
+
+<div style="margin: auto;width: 100%;text-align: center">
+    <input placeholder="crn" id="crn-input">
+    <button onclick="registerCourse()">Register for a course</button>
+</div>
+-->
+<div class="main-content" style="display: flex; flex-direction: row;">
+    <!--
+    <div class="agenda-header">
+        <table class="agenda">
+        <tr>
+            <th>subject</th>
+            <th>number</th>
+            <th>section</th>
+            <th>operation</th>
+        </tr>
+        </table>
+    </div>
+    -->
+
+    <div class="course-adder">
+        <div class="course-list-container">
+            <ul class="course-list-adder" id="course-list" ondragover="onDragOver(event)" ondrop="onDrop(event)">
+            </ul>
+        </div>
+        <div class="course-change-btn-container">
+            <button type="button" id="course-change-submit">Submit Changes</button>
+        </div>
+    </div>
+
+    <div class="course-container">
+    <div id="content">
+        <section class="course-content">
+            <div class="listing-container">
+                <div class="courses-filter">
+                    <form id="course-search-form" action="" class="course-filters">
+                        <div class="filter-container">
+                            <ul class="flat-list">
+                                <li class="subject-filter">
+                                    <!-- Drop down menu -->
+                                    <div class="form-field-dropdown-field" id="form-field-subject">
+                                        <label for="subject">Subject</label>
+                                        <select name="subject" id="subject">
+                                            <option value=""></option>
+                                            <option value="ANTH">Anthropology</option>
+                                            <option value="ARCH">!Archaeology</option>
+                                            <option value="BIOC">!Biochemistry</option>
+                                            <option value="BIOL">Biology</option>
+                                            <option value="BUSI">Business</option>
+                                            <option value="CHEM">Chemistry</option>
+                                            <option value="CIV">!Civilization</option>
+                                            <option value="CLAS">Classics</option>
+                                            <option value="CMST">!Communications</option>
+                                            <option value="COMP">Computer Science</option>
+                                            <option value="CRIM">Criminology</option>
+                                            <option value="EASC">Earth Sciences</option>
+                                            <option value="ECON">Economics</option>
+                                            <option value="ED">Education</option>
+                                            <option value="ECE">!Iunno</option>
+                                            <option value="ENGI">Engineering</option>
+                                            <option value="ENGL">English</option>
+                                            <option value="FOLK">Folklore</option>
+                                            <option value="FREN">French</option>
+                                            <option value="GNDR">Gender Studies</option>
+                                            <option value="GEOG">Geology</option>
+                                            <option value="GERM">German</option>
+                                            <option value="HIST">History</option>
+                                            <option value="HKR">!Human Kinetic Resources</option>
+                                            <option value="INTL">International</option>
+                                            <option value="LANG">Languages</option>
+                                            <option value="LWSO">!Iunno2</option>
+                                            <option value="LING">Linguistics</option>
+                                            <option value="MATH">Mathematics</option>
+                                            <option value="STAT">Statistics</option>
+                                            <option value="ME">!Iunno3</option>
+                                            <option value="MED">Medicine</option>
+                                            <option value="MEMS">!Iunno4</option>
+                                            <option value="MUS">Musicology</option>
+                                            <option value="NURS">Nursing</option>
+                                            <option value="OSCS">Ocean Sciences</option>
+                                            <option value="ONAE">!Iunno5</option>
+                                            <option value="PHAR">!Pharmaceuticals</option>
+                                            <option value="PHIL">Philosophy</option>
+                                            <option value="PHYS">Physics</option>
+                                            <option value="POSC">Political Science</option>
+                                            <option value="PROC">!Processing</option>
+                                            <option value="PSYC">Psychology</option>
+                                            <option value="RELS">!Religions</option>
+                                            <option value="RUSS">Russian</option>
+                                            <option value="SCWK">Social Work</option>
+                                            <option value="SOCI">Sociology</option>
+                                            <option value="SPAN">Spanish</option>
+                                            <option value="UGRD">!Undergraduate</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li class="number-filter">
+                                    <!-- Enter number or Drop down menu -->
+                                    <div class="form-field-text-field" id="form-field-number">
+                                        <label for="number">Course Number</label>
+                                        <input type="text" id="number">
+                                    </div>
+                                    <span class="filter-split">OR</span>
+                                    <div class="form-field-dropdown-field" id="form-field-number-range">
+                                        <label for="number-range">Course Level</label>
+                                        <select name="number-range" id="number-range">
+                                            <option value=""></option>
+                                            <option value="1...">1000-Level</option>
+                                            <option value="2...">2000-Level</option>
+                                            <option value="3...">3000-Level</option>
+                                            <option value="4...">4000-Level</option>
+                                            <option value="5...">5000-Level</option>
+                                            <option value="6...">6000-Level</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li class="name-filter">
+                                    <!-- Text input -->
+                                    <div class="form-field-text-field" id="form-field-name">
+                                        <label for="name">Search Name</label>
+                                        <input type="text" id="name">
+                                    </div>
+                                </li>
+                                <li class="time-filter">
+                                    <!-- Two part text input -->
+                                    <div class="form-field-text-field" id="form-field-starttime">
+                                        <label for="starttime">Start Time</label>
+                                        <input type="text" id="starttime">
+                                    </div>
+                                    <span class="filter-split">--</span>
+                                    <div class="form-field-text-field" id="form-field-endtime">
+                                        <label for="endtime">End Time</label>
+                                        <input type="text" id="endtime">
+                                    </div>
+                                </li>
+                                <li class="days-filter">
+                                    <!-- Checkboxes -->
+                                    <div class="form-field-check-field" id="form-field-days">
+                                        <div class="check">
+                                            <label for="monday">Monday</label>
+                                            <input type="checkbox" id="monday" value="M">
+                                        </div>
+                                        <div class="check">
+                                            <label for="tuesday">Tuesday</label>
+                                            <input type="checkbox" id="tuesday" value="T">
+                                        </div>
+                                        <div class="check">
+                                            <label for="wednesday">Wednesday</label>
+                                            <input type="checkbox" id="wednesday" value="W">
+                                        </div>
+                                        <div class="check">
+                                            <label for="thursday">Thursday</label>
+                                            <input type="checkbox" id="thursday" value="R">
+                                        </div>
+                                        <div class="check">
+                                            <label for="friday">Friday</label>
+                                            <input type="checkbox" id="friday" value="F">
+                                        </div>
+                                        <div class="check">
+                                            <label for="saturday">Saturday</label>
+                                            <input type="checkbox" id="saturday" value="S">
+                                        </div>
+                                        <div class="check">
+                                            <label for="sunday">Sunday</label>
+                                            <input type="checkbox" id="sunday" value="U">
+                                        </div>
+                                    </div>
+                                    <span class="filter-split">|</span>
+                                    <div class="form-field-check-field" id="form-field-exclusive">
+                                        <div class="check">
+                                            <label for="exclusive">Exclusive</label>
+                                            <input type="checkbox" name="exclusive" id="exclusive" value="Y">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="section-filter" id="section-filter">
+                                    <!-- Text input -->
+                                    <div class="form-field-text-field" id="form-field-section">
+                                        <label for="section">Section</label>
+                                        <input type="text" id="section">
+                                    </div>
+                                </li>
+                                <li class="crn-filter" id="crn-filter">
+                                    <!-- Text input -->
+                                    <div class="form-field-text-field" id="form-field-crn">
+                                        <label for="crn">CRN</label>
+                                        <input type="text" id="crn">
+                                    </div>
+                                </li>
+                                <li class="slot-filter" id="slot-filter">
+                                    <!-- Text input -->
+                                    <div class="form-field-text-field" id="form-field-slot">
+                                        <label for="slot">Slot</label>
+                                        <input type="text" id="slot">
+                                    </div>
+                                </li>
+                                <li class="credhr-filter" id="credhr-filter">
+                                    <!-- Text input -->
+                                    <div class="form-field-text-field" id="form-field-credhr">
+                                        <label for="credhr">Credit Hours</label>
+                                        <input type="text" id="credhr">
+                                    </div>
+                                </li>
+                                <li class="billhr-filter" id="billhr-filter">
+                                    <!-- Text input -->
+                                    <div class="form-field-text-field" id="form-field-billhr">
+                                        <label for="billhr">Billable Hours</label>
+                                        <input type="text" id="billhr">
+                                    </div>
+                                </li>
+                                <li class="room-filter" id="room-filter">
+                                    <!-- Drop down menu and text input -->
+                                    <div class="roombuild-filter">
+                                        <label for="roombuild">Building</label>
+                                        <select name="roombuild" id="roombuild">
+                                            <option value=""></option>
+                                            <option value="A">Arts and Administration</option>
+                                            <option value="BN">Business Administration</option>
+                                            <option value="BT">Biotechnology</option>
+                                            <option value="C">Chemistry-Physics</option>
+                                            <option value="CSF">Core Science Facility</option>
+                                            <option value="CS">Computing Services</option>
+                                            <option value="ED">Education (G.A. Hickman)</option>
+                                            <option value="EN">Engineering (S.J. Carew)</option>
+                                            <option value="ER">Earth Sciences (Alexander Murray)</option>
+                                            <option value="H">Health Sciences Center</option>
+                                            <option value="HH">Mathematics (Henrietta Harvey)</option>
+                                            <option value="IIC">Bruneau Centre for Research and Innovation </option>
+                                            <option value="J">St. John's College</option>
+                                            <option value="M">Medicine (Medical Education Centre)</option>
+                                            <option value="MU">Music (M.O. Morgan) </option>
+                                            <option value="PE">Physical Education</option>
+                                            <option value="QC">Queen's College</option>
+                                            <option value="SN">Science</option>
+                                            <option value="UC">University Centre (Smallwood Centre)</option>
+                                        </select>
+                                    </div>
+                                    <div class="roomnumber-filter" id="roomnumber-filter">
+                                        <label for="roomnumber">Room Number</label>
+                                        <input type="text" id="roomnumber">
+                                    </div>
+                                </li>
+                                <li class="type-filter" id="type-filter">
+                                    <!-- Drop down menu -->
+                                    <div class="form-field-dropdown-field" id="form-field-type">
+                                        <label for="type">Schedule Type</label>
+                                        <select name="type" id="type">
+                                            <option value=""></option>
+                                            <option value="CEX">Comprehensive Exam</option>
+                                            <option value="CLI">Clinical</option>
+                                            <option value="C&L">Both Clinical and Laboratory</option>
+                                            <option value="DST">Dissertation</option>
+                                            <option value="D/E">Distance Education (Online Education)</option>
+                                            <option value="ENS">Ensemble</option>
+                                            <option value="HES">Honours Essay</option>
+                                            <option value="IND">Independent Study Course</option>
+                                            <option value="INT">Internship</option>
+                                            <option value="LAB">Laboratory</option>
+                                            <option value="LEC">Lecture</option>
+                                            <option value="L&L">Lecture and Laboratory</option>
+                                            <option value="PSI">Personalized System of Instruction</option>
+                                            <option value="REA">Reading Course</option>
+                                            <option value="SAL">Software Application Lab</option>
+                                            <option value="SEM">Seminar</option>
+                                            <option value="STD">Studio</option>
+                                            <option value="WRK">Work Term</option>
+                                            <option value="WWW">World Wide Web</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li class="method-filter" id="method-filter">
+                                    <!-- Drop down menu -->
+                                    <div class="form-field-dropdown-field" id="form-field-method">
+                                        <label for="method">Instructional Method</label>
+                                        <select name="method" id="method">
+                                            <option value=""></option>
+                                            <option value="B">Blended</option>
+                                            <option value="F">Flexible</option>
+                                            <option value="IP">In person</option>
+                                            <option value="IS">Independent study</option>
+                                            <option value="O">Online</option>
+                                            <option value="R">Remote</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li class="checkbox-filters" id="checkbox-filters">
+                                    <div class="waitlist-filter" id="waitlist-filter">
+                                        <!-- Checkbox -->
+                                        <div class="form-field-check-field" id="form-field-waitlist">
+                                            <div class="check">
+                                                <label for="waitlist">Waitlist</label>
+                                                <input type="checkbox" id="waitlist" value="Y">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="precheck-filter" id="precheck-filter">
+                                        <!-- Checkbox -->
+                                        <div class="form-field-check-field" id="form-field-precheck">
+                                            <div class="check">
+                                                <label for="precheck">Precheck</label>
+                                                <input type="checkbox" id="precheck" value="Y">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="reservelifted-filter" id="reservelifted-filter">
+                                        <!-- Checkbox -->
+                                        <div class="form-field-check-field" id="form-field-reservelifted">
+                                            <div class="check">
+                                                <label for="reservelifted">Reserve Lifted</label>
+                                                <input type="checkbox" id="reservelifted" value="Y">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="attribute-filter" id="attribute-filter">
+                                    <!-- Drop down menu -->
+                                    <div class="form-field-dropdown-field" id="form-field-attribute">
+                                        <label for="attribute">Attribute</label>
+                                        <select name="attribute" id="attribute">
+                                            <option value=""></option>
+                                            <option value="L">Limited Enrolment</option>
+                                            <option value="W">Critical Reading and Writing</option>
+                                            <option value="Q">Quantitative Reasoning</option>
+                                        </select>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="filter-option-btns">
+                            <div class="expand-collapse-filter">
+                                <button type="button" class="collapsible" id="expand-btn">SHOW ADVANCED FILTERS</button>
+                            </div>
+                            <div class="reset-button-container">
+                                <a type="reset" href="/course-registration.html">
+                                    <span>RESET</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="submit-filter-container">
+                            <!-- Submit button -->
+                            <button type="button" id="submitfilter">SEARCH COURSES</button>
+                        </div>
+                    </form>
+                </div>
+                <br>
+                <ul class="course-list">
+                    <div class="course-listing-perm">
+                        <div class="course-list-subject" id="subject-header">
+                            <span>Subject</span>
+                        </div>
+                        <div class="course-list-number" id="number-header">
+                            <span>Number</span>
+                        </div>
+                        <div class="course-list-name" id="name-header">
+                            <span>Name</span>
+                        </div>
+                        <div class="course-list-days" id="days-header">
+                            <span>Days</span>
+                        </div>
+                        <div class="course-list-times" id="times-header">
+                            <div class="starttime-header">
+                                <span>Start Time</span>
+                            </div>
+                            <span>-</span>
+                            <div class="endtime-header">
+                                <span>End Time</span>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+                <div class="courses-body" id="courses-body">
+                    <ul class="course-list" id="courseul"></ul>
+                    <ul class="container" ondragover="onDragOver(event)" ondrop="onDrop(event)"></ul>
+                </div>
+            </div>
+        </section>
+    </div>
+    </div>
+</div>
+
+<script src="/js/courselisthandler.js"></script>
+<script src="/js/courseregister.js"></script>
+<script src="./js/hamburgermenu.js"></script>
+</body>
+<script>
+  let userInfo = {}
+  async function registerCourse() {
+
+    await $.ajax({
+      url: '/registerCourse',
+      type: 'PUT',
+      data: {
+                firstCRN: $("#crn-input").val()+"",
+                userId: userInfo.studentid
+      },
+      success: function(response){
+        console.log(response)
+      }
+    });
+  }
+  $(document).ready(
+          async ()=>{
+            $('#menu').load('menu.html');
+            await $.ajax({
+              url: '/profile',
+              type: 'GET',
+              success: function(response){
+                userInfo = response
+              }
+            });
+          }
+  )
+</script>
+</html>
