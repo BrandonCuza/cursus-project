@@ -41,7 +41,8 @@ export async function create_profile(req, res) {
     let isValid = await validate_fields(name, studentid, email, username, password, hasCalendar, googuser, googpass, major, minor, year);
     if (isValid){
         let new_profile = new User_profile(name, studentid, email, username, password, hasCalendar, googuser, googpass, major, minor, year);
-        let msg = await new_profile.save();               
+        let msg = await new_profile.save();
+        res.send(msg)               
     } else {
         console.log('The user profile was not inserted into the database because it is not valid.');
         res.send('Error. User profile not inserted into the database.');

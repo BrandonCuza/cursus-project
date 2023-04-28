@@ -81,21 +81,6 @@ async function createServer(){
     app.get("/homepage",(req,resp)=>{
       resp.redirect("/homepage.html")
     })
-
-    app.put("/registerCourse",async (req, resp) => {
-      // gather all crn of the user, then compare with the current crn
-      let allCourse = await getStuAllCourse(req.body.userId)
-      for (let course of allCourse) {
-        req.body.secondCRN = course.crn
-        let isOk = await check_conflict(req,resp)
-        console.log(isOk)
-        if (isOk){
-          resp.send("Time repeats, please register for other courses")
-          return
-        }
-      }
-        resp.send(req.body.crn + "-->" + req.body.userId)
-    })   // this is not complete
       
     app.get('/logout', (req, res) => {
       req.session.destroy((err)=>{});
@@ -115,7 +100,6 @@ async function createServer(){
     // POST
     app.post('/profile', (req, res) => {
       create_profile(req, res);
-      res.redirect('/login');
     });
     app.post('/profiles', create_profile);
 
@@ -160,10 +144,7 @@ async function createServer(){
 
 createServer();
 
-// I created this callback function to capture
-// when for when we kill the server. 
-// This will avoid us to create many mongo connections
-// and use all our computer resources
+// Close MongoDB client when server is closed
 process.on('SIGINT', () => {
   console.info('SIGINT signal received.');
   console.log('Closing Mongo Client.');

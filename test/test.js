@@ -137,7 +137,6 @@ describe('MUN Course Tool v1', function() {
             strictEqual(res.data, 'User profile correctly inserted into the database.');
         })
         it('Success 2. PUT - Login as new user.', async function() {
-            this.timeout(15000);
             let data = {
                 username: 'TestUser',
                 password: 'TestPassword1'
@@ -169,7 +168,7 @@ describe('MUN Course Tool v1', function() {
         it('Success 5. PUT - Request password reset', async function() {
             let res = await instance.put('/profile/password_reset');
             strictEqual(res.data, 'Email sent.')
-        })
+        }).timeout(5000)
         it ('Success 6. DELETE - Delete profile from database', async function() {
             let res = await instance.delete('/profile');
             strictEqual(res.data, 'User profile was deleted.');

@@ -33,7 +33,7 @@ class User_profile {
         try {
             let collection = await _get_profiles_collection();
             let mongoObj = await collection.insertOne(this);
-            console.log('One (1) user profile was inserted into the database with id: '+mongoObj.insertedId);
+            console.log('One (1) user profile was inserted into the database with username: '+mongoObj.insertedId);
             return 'User profile correctly inserted into the database.';
         } catch(err) {
             throw err;
