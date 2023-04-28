@@ -116,7 +116,7 @@ describe('MUN Course Tool v1', function() {
                 minor: 'Linguistics',
                 year: 3
             }
-            let res = await instance.post('/profiles', data);
+            let res = await instance.post('/profile', data);
             strictEqual(res.data, 'Error. User profile not inserted into the database.');
         })
         it('Success 1. POST - Valid input', async function() {
@@ -133,7 +133,7 @@ describe('MUN Course Tool v1', function() {
                 minor: 'Linguistics',
                 year: 3
             };
-            let res = await instance.post('/profiles', data);
+            let res = await instance.post('/profile', data);
             strictEqual(res.data, 'User profile correctly inserted into the database.');
         })
         it('Success 2. PUT - Login as new user.', async function() {

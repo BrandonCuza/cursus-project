@@ -98,10 +98,7 @@ async function createServer(){
     // Resource paths
 
     // POST
-    app.post('/profile', (req, res) => {
-      create_profile(req, res);
-    });
-    app.post('/profiles', create_profile);
+    app.post('/profile', create_profile);
 
     //GET
     app.get('/profile', read_profile);

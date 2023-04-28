@@ -60,7 +60,7 @@ let _validate_password = (password) =>{
 	return new Promise((resolve, reject) =>{
 		let is_valid = false;
 		if (typeof password == 'string') {
-			is_valid = validator.isAlphanumeric(password);
+			is_valid = validator.isAlphanumeric(password, "en-US", { ignore: "./$" });
 		}
 		if (is_valid) {
 			resolve('The password is valid.');

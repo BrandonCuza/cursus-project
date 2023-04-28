@@ -1,11 +1,14 @@
+import bcrypt from 'bcrypt';
 import { validate_fields } from '../utils/validate-fields.js';
 import { User_profile } from '../model/user_profile.js';
+
+const saltRounds = 10;
 
 // These are dummy inputs to fill the parameters of the validate_fields calls
 let name = 'Test Name';
 let studentid = "201881792";
 let email = 'testjohndoe343@gmail.com';
-let  password = 'TestPassword1';
+let password = 'TestPassword1';
 let hasCalendar = false;
 let googuser = '';
 let googpass = '';
@@ -23,7 +26,11 @@ export async function create_profile(req, res) {
     let studentid = req.body.studentid; 
     let email = req.body.email;
     let username = req.body.username;
-    let password = req.body.password;
+    let password = await bcrypt.genSalt(saltRounds).then(salt => {
+        return bcrypt.hash(req.body.password, salt);
+    }).catch(err => {
+        console.log(err);
+    });
     let hasCalendar = req.body.hasCalendar;
     if (hasCalendar == "true") {
         hasCalendar = true;
@@ -89,11 +96,12 @@ export async function isValidUser(req) {
     let obj = await User_profile.get(username);
     if (obj.length > 0){
         let password = req.body.password;
-        if (obj[0].password == password) {
-            return true;
-        } else {
-            return false;
-        }        
+        let isValid = await bcrypt.compare(password, obj[0].password).then(res => {
+            return res;
+        }).catch(err => {
+            console.log(`Error: ${err}`);
+        })
+        return isValid;
     } else {
         return false;
     }
@@ -175,7 +183,11 @@ export async function update_profile_password(req, res) {
     if (username == undefined) {
         username = 'TestUser'
     };
-    let password = req.body.password;
+    let password = bcrypt.genSalt(saltRounds).then(salt => {
+        return bcrypt.hash(req.body.password, salt);
+    }).catch(err => {
+        console.log(err);
+    });
     let isValid = await validate_fields(name, studentid, email, username, password, hasCalendar, googuser, googpass, major, minor, year);
     if (isValid){
         let msg = await User_profile.updatePassword(username, password);
