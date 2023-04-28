@@ -324,4 +324,4 @@ class User_profile {
 }
 
 const _User_profile = User_profile;
-export { _User_profile as User_profile, getStuByGoogle };
+export { _User_profile as User_profile};

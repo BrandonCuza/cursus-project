@@ -1,0 +1,33 @@
+{
+  "name": "cursus-project",
+  "version": "1.0.0",
+  "description": "This project was started and takes inspiration from the 'contacts-app-v4' example created by Dr. Amilcar Soares. It has inherited the model-view-controller pattern that\r Dr. Soares used in that example. This was originally a group project for COMP3100 'Web Development' taught by Dr. Edward Brown, however I have removed all contributions by my partner\r so that it now reflects only my work, skill, and knowledge.",
+  "main": "app.js",
+  "type": "module",
+  "directories": {
+    "test": "mocha"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrandonCuza/cursus-project.git"
+  },
+  "author": "Brandon Cuza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrandonCuza/cursus-project/issues"
+  },
+  "homepage": "https://github.com/BrandonCuza/cursus-project#readme",
+  "dependencies": {
+    "assert": "^2.0.0",
+    "axios": "^1.4.0",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "mocha": "^10.2.0",
+    "mongodb": "^5.3.0",
+    "nodemailer": "^6.9.1",
+    "validator": "^13.9.0"
+  }
+}

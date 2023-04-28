@@ -25,7 +25,7 @@ let testMajor = 'Biology';
 let testMinor = 'Linguistics';
 let testYear = 3;
 
-describe('MUN Course Tool v1 - Tests for Brandon Cuza\'s implementations', function() {
+describe('MUN Course Tool v1', function() {
     describe('Test Models', function() {
         describe('User Profile', function() {
             it('Test if profile is invalid (Invalid name)', async function() {

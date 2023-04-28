@@ -3,7 +3,6 @@ import express, { json, urlencoded } from 'express';
 import session from 'express-session';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { getStuAllCourse,getStuAgenda } from "./model/student-course.mjs";
 import { create_profile, delete_profile, read_all_profiles, read_profile, isValidUser, request_password_reset, update_profile_alarms_add, update_profile_compcourses_add, update_profile_courses_add, update_profile_courses_drop, update_profile_degreeplan, update_profile_email, update_profile_googpass, update_profile_googuser, update_profile_hascalendar, update_profile_major, update_profile_minor, update_profile_name, update_profile_password, update_profile_studentid, update_profile_year } from './controller/user_profiles.js';
 import { read_courses, read_course, read_all_courses, check_conflict} from './controller/courses.js';
 import { connectToDB, closeDBConnection } from './utils/db.js';
