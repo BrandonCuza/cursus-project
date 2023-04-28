@@ -13,6 +13,7 @@ const instance = create({
         'content-type': 'application/json'}
 });
 
+// These are dummy values for the tests
 let testName = 'Test Name';
 let testStudentId = "201881792";
 let testEmail = 'testjohndoe343@gmail.com';
